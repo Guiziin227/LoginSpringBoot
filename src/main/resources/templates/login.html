@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #4f46e5, #7c3aed);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <!-- Container para Login -->
+    <div id="login-container" class="form-container">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
+        <form action="/login" method="POST" class="space-y-4">
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" required
+                       class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
+                <input type="password" id="password" name="password" required
+                       class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <button type="submit"
+                    class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+                Entrar
+            </button>
+        </form>
+        <p class="mt-4 text-center text-sm text-gray-600">
+            Não tem uma conta? <a href="#" onclick="showRegisterForm()"
+                                  class="text-indigo-600 hover:underline">Registrar</a>
+        </p>
+    </div>
+
+    <!-- Container para Registrar -->
+    <div id="register-container" class="form-container hidden">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Registrar</h2>
+        <form action="/register" method="POST" class="space-y-4">
+            <div>
+                <label for="reg-nome" class="block text-sm font-medium text-gray-700">Nome</label>
+                <input type="nome" id="reg-nome" name="nome" required
+                       class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="reg-email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="reg-email" name="email" required
+                       class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="reg-password" class="block text-sm font-medium text-gray-700">Senha</label>
+                <input type="password" id="reg-password" name="password" required
+                       class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div>
+                <label for="reg-password-confirm" class="block text-sm font-medium text-gray-700">Confirmar Senha</label>
+                <input type="password" id="reg-password-confirm" name="password-confirm" required
+                       class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <button type="submit"
+                    class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+                Registrar
+            </button>
+        </form>
+        <p class="mt-4 text-center text-sm text-gray-600">
+            Já tem uma conta? <a href="#" onclick="showLoginForm()"
+                                 class="text-indigo-600 hover:underline">Fazer Login</a>
+        </p>
+    </div>
+
+    <!-- Container para Logout -->
+    <div id="logout-container" class="form-container hidden">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Bem-vindo!</h2>
+        <form action="/logout" method="POST">
+            <button type="submit"
+                    class="w-full bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition">
+                Sair
+            </button>
+        </form>
+        <p class="mt-4 text-center text-sm text-gray-600">
+            Voltar para <a href="#" onclick="showLoginForm()"
+                           class="text-indigo-600 hover:underline">Login</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    function showLoginForm() {
+        document.getElementById('login-container').classList.remove('hidden');
+        document.getElementById('register-container').classList.add('hidden');
+        document.getElementById('logout-container').classList.add('hidden');
+    }
+
+    function showRegisterForm() {
+        document.getElementById('login-container').classList.add('hidden');
+        document.getElementById('register-container').classList.remove('hidden');
+        document.getElementById('logout-container').classList.add('hidden');
+    }
+
+    function showLogoutForm() {
+        document.getElementById('login-container').classList.add('hidden');
+        document.getElementById('register-container').classList.add('hidden');
+        document.getElementById('logout-container').classList.remove('hidden');
+    }
+
+
+</script>
+</body>
+</html>
