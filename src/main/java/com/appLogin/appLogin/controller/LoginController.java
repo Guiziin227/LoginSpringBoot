@@ -5,6 +5,7 @@ import com.appLogin.appLogin.model.User;
 import com.appLogin.appLogin.repository.UserRepository;
 import com.appLogin.appLogin.service.CookieService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,8 @@ public class LoginController {
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model, HttpServletRequest request) {
+        model.addAttribute("name", CookieService.getCookie(request, "name"));
         return "index";
     }
 
